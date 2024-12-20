@@ -50,11 +50,11 @@ export const Contact = () => {
       };
   return (
     <div className='w-[100vw] h-[90vh] flex justify-center items-center'>
-        <div className='w-[80%] h-[80%]  flex flex-row'>
-            <div className='w-[50%] flex flex-col justify-center'>
+        <div className='w-[80%] h-[80%]  flex md:flex-row flex-col'>
+            <div className='md:w-[50%] w-[100%] flex flex-col justify-center'>
                 <h1 className='text-6xl mb-[50px]'>Contact Us</h1>
                 <p>Get in Touch <br></br>We’d love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out.</p>
-                <div className='mt-5 flex flex-row'>
+                <div className='mt-5 flex md:flex-row flex-col'>
                 <div onClick={toggleEmail} className="cursor-pointer">
         <FaEnvelope size={30} />
         {showEmail && (
@@ -62,7 +62,7 @@ export const Contact = () => {
             <a href="mailto:abhinav63381@gmail.com" className='text-blue-500' >Mail: abhinav63381@gmail.com</a>
           </div>
         )}</div>
-                    <div onClick={togglePhone} className="ml-10 cursor-pointer">
+                    <div onClick={togglePhone} className="md:ml-10 ml-0 cursor-pointer">
         <FaPhone size={30} />
         {showPhone && (
           <div className="mt-2 text-lg">
@@ -72,7 +72,7 @@ export const Contact = () => {
       </div>
                 </div>
             </div>
-            <div className='w-[50%] flex justify-center'>
+            <div className='md:mt-0 mt-5 md:w-[50%] w-[100%] flex justify-center'>
             <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-lg w-96"

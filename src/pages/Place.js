@@ -54,9 +54,9 @@ export const Place = () => {
   return (
     <div className="bg-gradient-to-b from-white to-blue-500/20 pb-5 bg-cover bg-center w-[100vw]">
         <div className='flex justify-center mt-10'>
-        <div className='w-[70vw] '>
+        <div className='md:w-[70vw] w-[90vw] '>
             <div className='flex flex-col w-max justify-between '>
-                <h1 className='text-3xl text-blue-700'>Plots available in {region.name}</h1>
+                <h1 className='md:text-3xl text-xl text-blue-700'>Plots available in {region.name}</h1>
                 <div className="h-[2px] bg-blue-700 w-full  mt-2 mb-5"></div>
             </div>
             {plots.map(plot => (

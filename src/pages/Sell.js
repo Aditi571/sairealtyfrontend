@@ -61,20 +61,21 @@ export const Sell = () => {
   ];
   
   return (
-    <div className='w-[100vw] h-[90vh] flex flex-row'>
-      <div className='w-[50%] h-[100%]'>
+    <div className='w-[100vw] h-[90vh] flex md:flex-row flex-col'>
+      <div  className='w-[50vw] h-[90vh] hidden md:flex'>
       <ReactFlow zoomOnScroll={false} 
         zoomOnPinch={false} 
-        panOnDrag={false}  nodes={nodes} edges={edges} fitView>
+        panOnDrag={false}  nodes={nodes} edges={edges} fitView
+      >
       </ReactFlow>
       </div>
-      <div className='flex flex-col justify-center items-center w-[50%]'>
-        <h1 className='text-4xl mb-10'>Contact us to sell your property</h1>
+      <div className='flex flex-col justify-center items-center md:w-[50%] w-[100%]'>
+        <h1 className='md:text-4xl text-2xl mb-10'>Contact us to sell your property</h1>
         <a className="text-blue-500" href="tel:+918439821578">+91 8439821578</a>
         <a className="text-blue-500" href="mailto:abhinav63381@gmail.com" >abhinav63381@gmail.com</a>
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-96"
+        className="bg-white p-6 rounded-lg shadow-lg md:w-96 w-[90%]"
       >
 
 
