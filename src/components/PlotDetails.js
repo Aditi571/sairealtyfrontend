@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink, useSearchParams } from "react-router-dom";
-import backgroundImage from '../assets/house.jpg';
 import { FaStar } from 'react-icons/fa';
 import Carousel from './Carousel';
 

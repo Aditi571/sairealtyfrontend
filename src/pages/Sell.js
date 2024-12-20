@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import ReactFlow, { MiniMap, Controls, Background } from 'reactflow';
+import ReactFlow  from 'reactflow';
 import 'reactflow/dist/style.css';
 
 export const Sell = () => {

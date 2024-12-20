@@ -3,7 +3,7 @@ import { Home } from "./pages/Home";
 import {  Routes, Route } from "react-router-dom";
 import { Signup } from "./components/Signup";
 import { Login } from "./components/Login";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Logout } from "./components/Logout";
 import { Dashboard } from "./pages/Dashboard";
 import { Place } from "./pages/Place";

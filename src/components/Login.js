@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import backgroundImage from '../assets/plainbg.png';
 
 export const Login = () => {
   const [email, setEmail] = useState('');

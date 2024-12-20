@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import backgroundImage from '../assets/plainbg.png';
 import { useNavigate } from 'react-router-dom';
 
 export const Signup = () => {

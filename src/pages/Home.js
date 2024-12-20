@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import backgroundImage from '../assets/building.webp';
 import { Link, useNavigate } from 'react-router-dom';
 
