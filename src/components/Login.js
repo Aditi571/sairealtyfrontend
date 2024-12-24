@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error,setError]=useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     if (!email || !password) {
-      setError('Both email and password are required');
+      setError("Both email and password are required");
       return;
     }
 
     try {
-      const response = await fetch('http://13.60.7.175:5000/login', {
-        method: 'POST',
+      const response = await fetch("http://13.60.7.175:5000/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json', 
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email,
@@ -28,26 +28,29 @@ export const Login = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed. Please check your credentials.');
+        throw new Error("Login failed. Please check your credentials.");
       }
 
-      const data = await response.json(); 
-      localStorage.setItem('token', data.token);
-      navigate('/');
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      navigate("/");
       console.log(data);
     } catch (err) {
       setError(err.message);
-      console.error('Login error', err);
+      console.error("Login error", err);
     }
   };
 
   return (
     <div className="h-screen w-full bg-cover bg-center flex justify-center items-center bg-gradient-to-b from-white to-blue-700/20">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+      <div className="bg-white p-8 rounded-lg w-[80vw] shadow-lg md:w-96">
         <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email
             </label>
             <input
@@ -60,7 +63,10 @@ export const Login = () => {
             />
           </div>
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
             <input
@@ -73,11 +79,7 @@ export const Login = () => {
             />
           </div>
 
-          {error && (
-            <div className="text-red-500 text-sm mb-4">
-              {error}
-            </div>
-          )}
+          {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
 
           <button
             type="submit"

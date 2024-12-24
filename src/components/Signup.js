@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Signup = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [address, setAddress] = useState('');
-  const [error, setError] = useState('');
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true); // Show loading state
 
@@ -21,54 +21,55 @@ export const Signup = () => {
       phone,
       email,
       password,
-      address
+      address,
     };
 
     try {
       // Make API call to backend
-      const response = await fetch('http://13.60.7.175:5000/signup', {
-        method: 'POST',
+      const response = await fetch("http://13.60.7.175:5000/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userData), // Send form data
       });
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Signup successful:', result);
+        console.log("Signup successful:", result);
         // Reset form
-        setName('');
-        setPhone('');
-        setEmail('');
-        setPassword('');
-        setAddress('');
+        setName("");
+        setPhone("");
+        setEmail("");
+        setPassword("");
+        setAddress("");
 
-        navigate('/');
+        navigate("/");
       } else {
         // Handle error if the signup fails
         const result = await response.json();
-        setError(result.message || 'User exists, please try again.');
+        setError(result.message || "User exists, please try again.");
       }
     } catch (err) {
-      console.error('Error:', err);
-      setError('An error occurred, please try again.');
+      console.error("Error:", err);
+      setError("An error occurred, please try again.");
     } finally {
       setLoading(false); // Hide loading state
     }
   };
 
   return (
-    <div
-      className="w-[100vw] pb-10 bg-cover bg-center flex justify-center items-center bg-gradient-to-b from-white to-blue-700/20"
-    >
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96 mt-[100px]">
+    <div className="w-[100vw] pb-10 bg-cover bg-center flex justify-center items-center bg-gradient-to-b from-white to-blue-700/20">
+      <div className="bg-white p-8 rounded-lg shadow-lg md:w-96 w-[80vw] mt-[100px]">
         <h2 className="text-2xl font-semibold mb-6 text-center">Signup</h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-4">
             {/* Name */}
             <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Name
               </label>
               <input
@@ -83,7 +84,10 @@ export const Signup = () => {
 
             {/* Phone Number */}
             <div className="mb-4">
-              <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="phone"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Phone Number
               </label>
               <input
@@ -98,7 +102,10 @@ export const Signup = () => {
 
             {/* Email */}
             <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email
               </label>
               <input
@@ -113,7 +120,10 @@ export const Signup = () => {
 
             {/* Password */}
             <div className="mb-4">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -128,7 +138,10 @@ export const Signup = () => {
 
             {/* Address */}
             <div className="mb-6">
-              <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="address"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Address
               </label>
               <textarea
@@ -148,11 +161,7 @@ export const Signup = () => {
             )}
 
             {/* Show error message if error exists */}
-            {error && (
-              <div className="text-red-500 text-sm mb-4">
-                {error}
-              </div>
-            )}
+            {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
 
             <button
               type="submit"
