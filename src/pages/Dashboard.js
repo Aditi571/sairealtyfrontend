@@ -6,7 +6,7 @@ export const Dashboard = () => {
         const getUserDetails = async () => {
             const token = localStorage.getItem('token');  // Get token from localStorage
           
-            const response = await fetch('https://arestatesbackend1.onrender.com/protected/user-details', {
+            const response = await fetch('http://13.60.7.175:5000/protected/user-details', {
               method: 'GET',
               headers: {
                 'Authorization': `Bearer ${token}`,  // Send token in Authorization header

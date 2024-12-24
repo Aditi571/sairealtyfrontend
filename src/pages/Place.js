@@ -18,7 +18,7 @@ export const Place = () => {
 
   const handleSearch = async () => {
       try {
-          const response = await fetch(`https://arestatesbackend1.onrender.com/getplots?region=${region.name}`);
+          const response = await fetch(`http://13.60.7.175:5000/getplots?region=${region.name}`);
           
           if (!response.ok) {
               const errorData = await response.json();

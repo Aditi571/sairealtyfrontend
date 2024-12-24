@@ -16,7 +16,7 @@ export const Login = () => {
     }
 
     try {
-      const response = await fetch('https://arestatesbackend1.onrender.com/login', {
+      const response = await fetch('http://13.60.7.175:5000/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', 

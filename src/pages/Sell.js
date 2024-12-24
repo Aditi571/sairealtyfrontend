@@ -24,7 +24,7 @@ export const Sell = () => {
     
     e.preventDefault();
     try {
-      const response = await fetch('https://arestatesbackend1.onrender.com/contact', {
+      const response = await fetch('http://13.60.7.175:5000/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

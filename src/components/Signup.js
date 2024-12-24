@@ -26,7 +26,7 @@ export const Signup = () => {
 
     try {
       // Make API call to backend
-      const response = await fetch('https://arestatesbackend1.onrender.com/signup', {
+      const response = await fetch('http://13.60.7.175:5000/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
