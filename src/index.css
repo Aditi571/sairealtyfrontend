@@ -4,6 +4,32 @@
 @import "slick-carousel/slick/slick.css"; 
 @import "slick-carousel/slick/slick-theme.css"; 
 
+body, html {
+  overflow-x: hidden;
+}
+.navbar{
+  background-color: #091d35;
+}
+
+.fira-sans {
+  font-family: "Fira Sans Condensed", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.gruppo {
+  font-family: "Gruppo", serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing:5;
+}
+.color-text{
+  color: rgba(132, 145, 244,0.9);
+}
+.color-bg{
+  background-color: #091d35;
+}
+
+
 /* Make slick carousel dots larger */
 .slick-dots li button {
     width: 18px;  /* Increase width of the dot */

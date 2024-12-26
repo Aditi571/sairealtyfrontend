@@ -10,8 +10,9 @@ export const PlotDetails = () => {
   const name = searchParams.get("name");
   const description = searchParams.get("description");
   const rating = searchParams.get("rating");
-  const length = searchParams.get("length");
-  const width = searchParams.get("width");
+  const depth = searchParams.get("depth");
+  const front = searchParams.get("front");
+  const gajj = searchParams.get("gajj");
 
   const plotdetail = {
     image1: searchParams.get("image1"),
@@ -36,8 +37,9 @@ export const PlotDetails = () => {
             Plot Description{" "}
           </h1>
           <p>{description}</p>
-          <h1>Length: {length}</h1>
-          <h1>Width: {width}</h1>
+          <h1>Depth: {depth}</h1>
+          <h1>Front: {front}</h1>
+          <h1>Gajj: {gajj}</h1>
           <div className="flex flex-row mt-10">
             <FaStar size={30} />
             <h1 className="text-2xl ml-5 md:text-4xl font-bold">

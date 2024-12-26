@@ -11,6 +11,7 @@ import { PlotDetails } from "./components/PlotDetails";
 import { Contact } from "./pages/Contact";
 import { Sell } from "./pages/Sell";
 import 'reactflow/dist/style.css';
+import { Regions } from "./pages/Regions";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/plot_details" element={<PlotDetails/>}></Route>
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/sell" element={<Sell/>}></Route>
+        <Route path="/regions" element={<Regions/>}></Route>
       </Routes>
       </div>
       

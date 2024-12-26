@@ -1,98 +1,181 @@
-import React, { useState } from "react";
-import backgroundImage from "../assets/building.webp";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import backgroundImage from "../assets/house.webp";
+import housebuy from "../assets/house2.jpg";
+import housesell from "../assets/house3.jpg";
+import { Link, useNavigate, NavLink } from "react-router-dom";
+import { PropertyCard } from "../components/PropertyCard";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaGoogle,
+  FaHome,
+  FaInstagram,
+  FaLinkedin,
+  FaLocationArrow,
+  FaMailchimp,
+  FaPhone,
+} from "react-icons/fa";
 
 export const Home = () => {
-  const [selectedregion, setSelectedregion] = useState(null);
-  const navigate = useNavigate();
+  const [propertyData,setPropertyData]=useState(null)
 
-  const handleregionClick = (region) => {
-    setSelectedregion(region);
-    navigate("/place", { state: { region } }); // Navigate to the details page with region data
-  };
+  const fetchPropertydata=async()=>{
+    try {
+      const data=await fetch("http://13.60.7.175:5000/getproperties");
+      console.log(data)
+      const response=await data.json();
+      console.log(response)
+      console.log(response[0])
+      setPropertyData(response);
+      
+    } catch (error) {
+      console.log(error)
+    }
 
-  const data = [
-    { id: 1, name: "Rajpur Road", pincode: 248001 },
-    { id: 2, name: "Mussoorie Road", pincode: 248179 },
-    { id: 3, name: "Chakarata Road", pincode: 248001 },
-    { id: 4, name: "Haridwar Bypass Road", pincode: 248001 },
-    { id: 5, name: "Doiwala", pincode: 248140 },
-    { id: 6, name: "Vikasnagar", pincode: 248198 },
-    { id: 7, name: "Malsi", pincode: 248003 },
-    { id: 8, name: "Clement Town", pincode: 248002 },
-    { id: 9, name: "Saharanpur Road", pincode: 248197 },
-    { id: 10, name: "Jakhan", pincode: 248001 },
-    { id: 11, name: "Kashmir Road", pincode: 248001 },
-    { id: 12, name: "Woolworth Estate", pincode: 248006 },
-    { id: 13, name: "Prem Nagar", pincode: 248007 },
-    { id: 14, name: "Harrawala", pincode: 248001 },
-    { id: 15, name: "Bhaniawala", pincode: 248142 },
-    { id: 16, name: "Shivpuri", pincode: 248009 },
-    { id: 17, name: "Pondha", pincode: 248007 },
-    { id: 18, name: "Dehradun Cantt", pincode: 248001 },
-    { id: 19, name: "Raipur", pincode: 248008 },
-    { id: 20, name: "Mithal Village", pincode: 248003 },
-  ];
+  }
+
+  useEffect(()=>{
+    fetchPropertydata();
+
+  },[propertyData])
+
+  if (propertyData === null) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <h2 className="text-blue-700 text-xl">Loading...</h2>
+      </div>
+    );
+  }
+
+
   return (
     <div>
-      <div>
-        <div className="flex flex-row h-[100vh]">
-          <div className="w-[100%] md:w-[50%] h-[100%] flex flex-col items-center justify-center">
-            <div className="flex  w-[70%] flex-col">
-              <h1 className="text-6xl font-semibold relative top-[-40px]">
-                Modern Living <br></br>For Everyone
+      <div
+        className="h-[100vh] bg-cover bg-center"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImage})`,
+        }}
+      >
+        <div className="flex flex-row h-[100vh] w-[100vw]">
+          <div className="w-[100%]  h-[100%] flex flex-col items-center justify-center">
+            <div className="flex text-white text-center justify-center items-center flex-col">
+              <h1 className=" fira-sans text-6xl font-semibold mb-2">
+                Trending Properties
               </h1>
-              <p>
-                Discover the perfect property with us! At Dream Homes Realty, we
-                specialize in connecting people to their ideal homes. Whether
-                you're buying, selling, or investing, we provide tailored
-                solutions, expert guidance, and unparalleled service to make
-                your real estate journey seamless and rewarding.
-              </p>
+              <h2 className="gruppo text-xl">EXCLUSIVELY BY SAIREALTY</h2>
               <div className="flex text-white p-3 rounded-lg bg-blue-700 w-max mt-5 hover:scale-110 transition-transform duration-300">
-                <Link to="/contact">
-                  <h1>Contact Us</h1>
+                <Link to="/regions">
+                  <h1>Explore</h1>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="md:w-[50%] h-[100%] flex items-center justify-center">
-            <div
-              className="md:w-[90%] h-[70%] bg-cover bg-center"
-              style={{ backgroundImage: `url(${backgroundImage})` }}
-            ></div>
+        </div>
+      </div>
+
+      <div className="w-[100vw] h-[90vh] text-center flex flex-col justify-center items-center">
+        <h1 className="gruppo md:text-4xl text-2xl mb-10 ">What are you looking for?</h1>
+        <div className="flex flex-col md:flex-row md:w-[80%] w-[100%] h-[70%] text-white text-6xl text-bold fira-sans">
+        <NavLink
+            to="/regions" className="md:w-[50%] w-[100%] md:h-full h-[40vh]">
+          <div
+            className="w-[100%] h-[100%] flex justify-center items-center bg-cover bg-center"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${housebuy})`,
+            }}
+          >
+            BUY
+          </div>
+          </NavLink>
+          <NavLink
+            to="/sell" className="md:w-[50%] w-[100%] md:h-full h-[40vh]">
+              <div
+            className="w-[100%] h-[100%] flex justify-center items-center bg-cover bg-center"
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(132, 145, 244,0.9), rgba(132, 145, 244,0.9)), url(${housesell})`,
+            }}
+          >
+            SELL
+          </div>
+            </NavLink>
+          
+        </div>
+      </div>
+
+      <div className="w-[100vw] h-[100vh] items-center flex flex-col">
+        <h1 className="gruppo mb-5  text-xl">NEW PROPERTIES</h1>
+        <h2 className="fira-sans font-bold mb-10 text-4xl">For Sale</h2>
+        <div className="flex justify-center items-center flex-col w-[100%]">
+          <div className="w-[80%] h-[70vh] flex overflow-x-auto flex-row ">
+            {propertyData.map((property) => (
+              <div className="ml-5">
+                <PropertyCard obj={property}></PropertyCard>
+              </div>
+            ))}
+          </div>
+          <NavLink to="/regions">
+          <div className="bg-blue-500 fira-sans p-2 text-white px-5">
+            View More
+          </div>
+          </NavLink>
+          
+        </div>
+      </div>
+
+      <div
+        className="md:h-[70vh] h-[40vh] bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      ></div>
+
+      <div className="flex flex-col items-center w-[100vw] justify-center bg-gradient-to-b from-white to-blue-500/20">
+        <h1 className="md:text-4xl text-xl w-[70vw] mb-10 text-blue-700 gruppo mt-10">
+          YOUR DREAM HOUSE IS ONE STEP AWAY!
+        </h1>
+        <div className="w-[80vw] pb-10 space-y-5 items-center flex md:flex-row flex-col justify-between">
+          <div className="flex items-center flex-col">
+            <FaPhone size={60} rotate={180} />
+            <h1 className="mt-10 mb-5 fira-sans text-4xl">Call Us</h1>
+            <a href="tel:+918439821578" className="text-blue-500">
+              +91 8439821578
+            </a>
+          </div>
+          <div className="flex items-center flex-col">
+            <FaInstagram size={60} />
+            <h1 className="mt-10 mb-5 fira-sans text-4xl">Find Us</h1>
+            <a href="tel:+918439821578" className="text-blue-500">
+              +91 8439821578
+            </a>
+          </div>
+          <div className="flex items-center flex-col">
+            <FaEnvelope size={60} />
+            <h1 className="mt-10 mb-5 fira-sans text-4xl">Message Us</h1>
+            <a href="mailto:abhinav63381@gmail.com" className="text-blue-500">
+              abhinav63381@gmail.com
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="flex w-[100%] justify-center bg-gradient-to-b from-white to-blue-500/20">
-        <div className="w-[80vw]">
-          <div className="flex flex-col md:w-max justify-between mb-10">
-            <h1 className="text-3xl text-blue-700">
-              What we have in store for you
-            </h1>
-            <div className="h-[2px] bg-blue-700 w-full  mt-2 mb-5"></div>
-            <p>
-              Explore a wide range of plots in prime locations of dehradun! .
-              <br></br>
-              Find the perfect location to build your dream home or <br></br>
-              grow your investment portfolio with us.{" "}
-            </p>
+      <div className="flex flex-row color-bg h-[30vh] text-white justify-center items-center">
+        <div className="flex justify-center w-[70%]">
+          <div className="w-[50%] h-[70%]  items-start flex flex-col justify-between">
+            <div>
+              <FaHome />
+              SaiRealty
+            </div>
+            <div>© 2035 by Dwell. Powered and secured by Wix</div>
           </div>
-
-          <div className="flex flex-wrap justify-center mb-10 ">
-            {data.map((region) => (
-              <div
-                className="pt-5 w-[90vw] md:w-[25vw] hover:scale-105 transition-transform duration-300"
-                key={region.id}
-                onClick={() => handleregionClick(region)}
-              >
-                <div className="flex flex-col shadow-lg p-6 mr-5 justify-center bg-white rounded-lg">
-                  <h1 className="text-3xl mb-5">{region.name}</h1>
-                  <p>Pincode : {region.pincode}</p>
-                </div>
-              </div>
-            ))}
+          <div className="w-[50%] flex items-end flex-col">
+            <div>
+              500 Terry Francine<br></br> Street San Francisco<br></br>CA 94158 info@mysite.com
+            </div>
+            <div className="flex flex-row space-x-6 mt-10">
+              <FaFacebook size={30}/>
+              <FaInstagram size={30}/>
+              <FaLinkedin size={30}/>
+            </div>
           </div>
         </div>
       </div>
