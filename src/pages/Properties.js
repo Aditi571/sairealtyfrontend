@@ -9,16 +9,16 @@ export const Properties = () => {
     setIsOpen(!isOpen);
   };
 
-  const regionData=[
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-    {id:1,region:"Indranagar"},
-  ]
+  const regionData = [
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+    { id: 1, region: "Indranagar" },
+  ];
   const [propertyData, setPropertyData] = useState(null);
 
   const fetchPropertydata = async () => {
@@ -66,16 +66,14 @@ export const Properties = () => {
 
           {isOpen && (
             <div className="absolute right-0 mt-2 w-48 h-[20vh] overflow-auto bg-white border border-gray-200 rounded-md shadow-lg z-50">
-                {regionData.map((region)=>(
-                    <a
-                    href="#option1"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    {region.region}
-                  </a>
-                ))}
-              
-              
+              {regionData.map((region) => (
+                <a
+                  href="#option1"
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                >
+                  {region.region}
+                </a>
+              ))}
             </div>
           )}
         </div>
