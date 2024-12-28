@@ -24,6 +24,11 @@ jobs:
         run: |
           ssh-keyscan -H 51.20.66.120 >> ~/.ssh/known_hosts
 
+      - name: Test SSH Connection
+        run: ssh -i ~/.ssh/aditi-rawat.pem ubuntu@51.20.66.120 hostname
+        env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -35,9 +40,12 @@ jobs:
       - name: Build Frontend
         run: npm run build
 
+
       - name: Deploy to Server
         run: |
           scp -r build/* ubuntu@51.20.66.120:/var/www/html/my-react-app
           ssh ubuntu@51.20.66.120 'sudo systemctl restart nginx'
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      
+      
