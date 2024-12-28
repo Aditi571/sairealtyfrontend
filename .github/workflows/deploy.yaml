@@ -40,6 +40,6 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          scp -i ~/.ssh/aditi-rawat.pem -r build/* ubuntu@51.20.66.120:/var/www/html/my-react-app
+          scp -i ~/.ssh/aditi-rawat.pem -r build/* ubuntu@51.20.66.120:/var/www/html
           ssh -i ~/.ssh/aditi-rawat.pem ubuntu@51.20.66.120 'sudo systemctl restart nginx'
 
