@@ -12,6 +12,18 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Set up SSH private key
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/aditi-rawat.pem
+          chmod 600 ~/.ssh/aditi-rawat.pem
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 51.20.66.120 >> ~/.ssh/known_hosts
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -22,12 +34,6 @@ jobs:
 
       - name: Build Frontend
         run: npm run build
-
-      - name: Add server to known hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -H 51.20.66.120 >> ~/.ssh/known_hosts
-
 
       - name: Deploy to Server
         run: |
