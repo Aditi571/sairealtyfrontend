@@ -23,6 +23,12 @@ jobs:
       - name: Build Frontend
         run: npm run build
 
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H 51.20.66.120 >> ~/.ssh/known_hosts
+
+
       - name: Deploy to Server
         run: |
           scp -r build/* ubuntu@51.20.66.120:/var/www/html/my-react-app
