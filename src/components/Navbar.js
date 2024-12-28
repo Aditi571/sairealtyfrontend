@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import backgroundImage from "../assets/AR.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 export const Navbar = () => {
   const [active, setActive] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const userData = localStorage.getItem("token");
     if (userData) {
       setActive(true);
     }
-    console.log("actibe");
   }, []);
 
   const toggleNavbar = () => {
@@ -21,13 +18,14 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="w-[100vw] h-[8vh] navbar">
+    <div className="w-[100vw] h-[8vh] navbar flex justify-between flex-row">
       <button
         onClick={toggleNavbar}
         className="text-white rounded-md ml-3 absolute top-2 z-100  md:hidden visible"
       >
         {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
       </button>
+      <h1 className="text-white text-2xl gruppo md:ml-5 ml-12 mt-2">Sai Realty</h1>
       {isOpen && (
         <div
           className="w-[100vw] h-[100vh] md:hidden absolute color-bg bg-black z-50"
@@ -39,6 +37,8 @@ export const Navbar = () => {
           >
             {isOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
           </button>
+
+          
 
           <nav className="flex w-[100%] h-[100%] ">
         <ul className="flex md:hidden flex-col w-[100%] h-[100%] justify-center items-center space-y-5">

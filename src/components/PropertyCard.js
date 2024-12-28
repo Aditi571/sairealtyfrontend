@@ -6,7 +6,7 @@ export const PropertyCard = ({obj}) => {
   const url = `/plot_details?${queryParams}`;
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-    <div className="md:w-[20vw] w-[70vw] h-[60vh] bg-white shadow-md overflow-hidden">
+    <div className="md:w-[20vw] w-[70vw] h-[55vh] bg-white shadow-md overflow-hidden">
         <div className="relative">
         <MapComponent srcvalue={obj} />
           <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded">
@@ -19,22 +19,12 @@ export const PropertyCard = ({obj}) => {
           <p className="text-lg font-bold text-gray-800 mt-2 mb-10">{obj.price}</p>
           <hr className="my-4" />
           <div className="flex justify-between text-center text-sm text-gray-600 mt-10">
+     
             <div>
-              <p className="font-semibold">Depth</p>
-              <p className="text-gray-800 text-lg">{obj.depth}</p>
+              <p className="font-bold">SIZE :</p>
+              <p className="text-gray-800 text-lg">{obj.size}</p>
             </div>
-            <div>
-              <p className="font-semibold">front</p>
-              <p className="text-gray-800 text-lg">{obj.front}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Gajj</p>
-              <p className="text-gray-800 text-lg">{obj.gajj}</p>
-            </div>
-            <div>
-              <p className="font-semibold">Sqft</p>
-              <p className="text-gray-800 text-lg">{obj.sqft}</p>
-            </div>
+ 
           </div>
         </div>
       </div>
